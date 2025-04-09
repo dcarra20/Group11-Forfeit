@@ -10,3 +10,6 @@ Open the folder and open the application by clicking on the HTML file called des
 
 ## Using the application
 Users can interact with the application by creating goals, looking at the calendar, and seeing a list of goals. All the goals are saved locally. 
+
+## AI Usage
+No artificial intelligence (AI) was used in this project.
