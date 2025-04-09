@@ -8,5 +8,5 @@ Once installed, extract the files into one folder.
 ## Starting the application
 Open the folder and open the application by clicking on the HTML file called desktopHome.
 
-##Using the application
+## Using the application
 Users can interact with the application by creating goals, looking at the calendar, and seeing a list of goals. All the goals are saved locally. 
