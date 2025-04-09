@@ -1,0 +1,129 @@
+* {
+  font-size: 18px;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Comic Sans MS", cursive, sans-serif;
+  background-color: #bee3ff; /* sky blue */
+  color: #ffffff;
+}
+
+.App {
+  text-align: center;
+  padding: 20px;
+}
+
+/* HEADER */
+.cereal-hero {
+  background-color: #fff6d1;
+  border-bottom: 5px dashed #f8b400;
+  border-radius: 0 0 50px 50px;
+  padding: 40px 20px;
+}
+
+.cereal-hero h1 {
+  font-size: 48px;
+  font-weight: bold;
+  color: #ff4d4d;
+}
+
+.cereal-hero p {
+  font-size: 24px;
+  color: #ec645b;
+}
+
+.cereal-card {
+  background-color: #ec645b;
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 10px 10px 26px rgba(0, 0, 0, 0.35);
+  margin-bottom: 20px;
+}
+
+/* COUNTER */
+.counter h2 {
+  font-size: 24px;
+  color: rgb(0, 0, 0);
+}
+
+.counter button {
+  font-size: 28px;
+  padding: 10px 20px;
+  background-color: #fbc1bb;
+  border-radius: 12px;
+  color: #ec645b;
+  border: none;
+  transition: background-color 0.2s ease;
+}
+
+.counter button:hover {
+  background-color: #ffc8c0;
+  cursor: pointer;
+}
+
+/* FILTERED LIST */
+.filter-list h1 {
+  font-size: 40px;
+  margin-bottom: 20px;
+  color: white;
+}
+
+input[type="text"] {
+  font-size: 28px;
+  padding: 10px;
+  border-radius: 10px;
+  border: 2px solid #ec645b;
+  width: 100%;
+  max-width: 300px;
+  margin-bottom: 20px;
+  color: #ec645b;
+}
+
+input::placeholder {
+  color: #ec645b;
+}
+
+input:focus {
+  outline: none;
+  border-color: #fbc1bb;
+}
+
+/* DROPDOWN */
+.dropdown-toggle {
+  background-color: #f8b400;
+  color: white;
+  border: none;
+  font-size: 28px;
+  border-radius: 10px;
+  padding: 10px 20px;
+}
+
+.dropdown-menu {
+  font-size: 24px;
+  border-radius: 10px;
+}
+
+/* ITEM LIST */
+ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+li {
+  background-color: #fbc1bb;
+  color: #ec645b;
+  margin-bottom: 10px;
+  padding: 12px;
+  border-radius: 10px;
+  font-weight: bold;
+  transition: transform 0.1s ease;
+}
+
+li:hover {
+  background-color: #ffc8c0;
+  transform: scale(1.02);
+  cursor: pointer;
+}
