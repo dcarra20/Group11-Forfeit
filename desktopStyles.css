@@ -1,0 +1,99 @@
+@media only screen and (min-width: 2560px) {
+  body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    width: 100vw;
+    font-family: "Courier New", Courier, monospace;
+  }
+}
+body {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  width: 100vw;
+  font-family: "Courier New", Courier, monospace;
+}
+.tab-section {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  background-color: whitesmoke;
+  border-style:solid;
+  border-top: 0px;
+  border-left: 0px;
+  border-right: 0px;
+  /* border-bottom: 50px; */
+  font-family: "Courier New", Courier, monospace;
+  align-items: center;
+}
+
+.home-tab button,
+.calendar-tab button,
+.goals-tab button {
+  font-weight: bold;
+  font-size: 50px;
+  font-family: "Courier New", Courier, monospace;
+  background:none;
+  border:none;
+  cursor: pointer;
+}
+.home-center {
+  height: 80vh;
+  width: auto;
+  background-color: whitesmoke;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  padding-bottom: 50px;
+}
+#goal-bttn{
+  border-style: groove;
+  background:none;
+  cursor: pointer;
+}
+
+.goals-tabs {
+  display: flex;
+  margin-bottom: 12px;
+}
+
+.tab-btn {
+  flex: 1;
+  padding: 10px;
+  font-size: 14px;
+  font-weight: bold;
+  border: 2px solid black;
+  background-color: #ffffff;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.tab-btn.active {
+  background-color: #add8e6;
+}
+
+.goals-list table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.goals-list th,
+.goals-list td {
+  padding: 8px;
+  border: 1px solid #ccc;
+  text-align: center;
+  font-size: 12px;
+}
+
+.complete {
+  color: green;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.hidden {
+  display: none;
+}

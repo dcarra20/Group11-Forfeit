@@ -1,0 +1,272 @@
+/*GLOBAL*/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Full viewport height */
+    background-color: #f9f9f9;
+}
+
+/*ablet Size*/
+.container {
+    background-color: #ffffff;
+    width: 430px;
+    height: 750px;
+    border: 3px solid black;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 20px;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 20px;
+}
+
+h1 {
+    font-size: 36px;
+    font-weight: bold;
+}
+
+.profile-icon {
+    font-size: 32px;
+    cursor: pointer;
+}
+
+/*HOME SCREEN*/
+.content {
+    text-align: center;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.content p {
+    font-size: 18px;
+    color: #555;
+    margin-bottom: 20px;
+    line-height: 1.5;
+}
+
+.set-goal-btn {
+    background-color: #ffffff;
+    border: 2px solid black;
+    padding: 12px 40px;
+    font-size: 18px;
+    font-weight: bold;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.set-goal-btn:hover {
+    background-color: #f0f0f0;
+}
+
+/*CALENDAR SCREEN*/
+.calendar {
+    padding: 10px;
+}
+
+.calendar-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.arrow-btn {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    padding: 5px;
+}
+
+.calendar-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.calendar-table th,
+.calendar-table td {
+    width: 14.2%;
+    padding: 15px;
+    text-align: center;
+    border: 1px solid #ccc;
+    font-size: 14px;
+}
+
+.prev-month,
+.next-month {
+    color: #ccc;
+}
+
+.goal {
+    background-color: #e8f5e9;
+    font-weight: bold;
+}
+
+.highlight {
+    background-color: #add8e6;
+    border-radius: 50%;
+}
+
+/*GOALS SCREEN*/
+.goals {
+    padding: 10px;
+}
+
+.goals-tabs {
+    display: flex;
+    margin-bottom: 10px;
+}
+
+.tab-btn {
+    flex: 1;
+    padding: 12px;
+    font-size: 16px;
+    font-weight: bold;
+    border: 2px solid black;
+    background-color: #ffffff;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.tab-btn.active {
+    background-color: #add8e6;
+}
+
+.tab-btn:hover {
+    background-color: #f0f0f0;
+}
+
+.goals-list table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.goals-list th,
+.goals-list td {
+    padding: 12px;
+    border: 1px solid #ccc;
+    text-align: center;
+    font-size: 14px;
+}
+
+.goals-list th {
+    background-color: #f5f5f5;
+    font-weight: bold;
+}
+
+/*Complete Button*/
+.complete {
+    color: green;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.hidden {
+    display: none;
+}
+
+/*CREATE GOAL SCREEN*/
+.create-goal-form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 20px;
+}
+
+.create-goal-form label {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.create-goal-form input,
+.create-goal-form select {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    font-size: 16px;
+    background-color: #f9f9f9;
+}
+
+.create-goal-form select {
+    appearance: none;
+}
+
+.wager-input {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.wager-input span {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.create-btn {
+    background-color: #ffffff;
+    border: 2px solid black;
+    padding: 12px 40px;
+    font-size: 18px;
+    font-weight: bold;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.create-btn:hover {
+    background-color: #f0f0f0;
+}
+
+/*Back Button*/
+.back-btn {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+/*BOTTOM NAVIGATION*/
+.bottom-nav {
+    display: flex;
+    justify-content: space-between;
+    border-top: 2px solid #ccc;
+}
+
+.nav-btn {
+    width: 33.3%;
+    padding: 16px;
+    border: none;
+    font-size: 16px;
+    font-weight: bold;
+    background-color: #ffffff;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.nav-btn.active {
+    background-color: #add8e6;
+}
+
+.nav-btn:hover {
+    background-color: #f0f0f0;
+}

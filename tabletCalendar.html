@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="tabletCSS.css">
+    <title>Forfeit - Calendar</title>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <h1>Forfeit</h1>
+            <div class="profile-icon">
+                &#128100;
+            </div>
+        </div>
+
+        <div class="calendar">
+            <div class="calendar-header">
+                <button class="arrow-btn">&#9664;</button>
+                <span>MARCH 2025</span>
+                <button class="arrow-btn">&#9654;</button>
+            </div>
+            <table class="calendar-table">
+                <tr>
+                    <th>S</th>
+                    <th>M</th>
+                    <th>T</th>
+                    <th>W</th>
+                    <th>T</th>
+                    <th>F</th>
+                    <th>S</th>
+                </tr>
+                <tr>
+                    <td class="prev-month">23</td>
+                    <td class="prev-month">24</td>
+                    <td class="prev-month">25</td>
+                    <td class="prev-month">26</td>
+                    <td class="prev-month">27</td>
+                    <td class="prev-month">28</td>
+                    <td data-day="1">1</td>
+                </tr>
+                <tr>
+                    <td data-day="2">2</td>
+                    <td data-day="3">3</td>
+                    <td data-day="4">4</td>
+                    <td data-day="5">5</td>
+                    <td data-day="6">6</td>
+                    <td data-day="7">7</td>
+                    <td data-day="8">8</td>
+                </tr>
+                <tr>
+                    <td data-day="9">9</td>
+                    <td data-day="10">10</td>
+                    <td data-day="11">11</td>
+                    <td data-day="12">12</td>
+                    <td data-day="13">13</td>
+                    <td data-day="14">14</td>
+                    <td data-day="15">15</td>
+                </tr>
+                <tr>
+                    <td data-day="16">16</td>
+                    <td data-day="17">17</td>
+                    <td data-day="18">18</td>
+                    <td data-day="19">19</td>
+                    <td data-day="20">20</td>
+                    <td data-day="21" class="highlight">21</td>
+                    <td data-day="22">22</td>
+                </tr>
+                <tr>
+                    <td data-day="23">23</td>
+                    <td data-day="24">24</td>
+                    <td data-day="25">25</td>
+                    <td data-day="26">26</td>
+                    <td data-day="27">27</td>
+                    <td data-day="28">28</td>
+                    <td data-day="29">29</td>
+                </tr>
+                <tr>
+                    <td data-day="30">30</td>
+                    <td data-day="31">31</td>
+                    <td class="next-month">1</td>
+                    <td class="next-month">2</td>
+                    <td class="next-month">3</td>
+                    <td class="next-month">4</td>
+                    <td class="next-month">5</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="bottom-nav">
+            <button class="nav-btn" onclick="navigateTo('tabletHome.html')">Home</button>
+            <button class="nav-btn active" onclick="navigateTo('tabletCalendar.html')">Calendar</button>
+            <button class="nav-btn" onclick="navigateTo('tabletGoals.html')">Goals</button>
+        </div>
+    </div>
+
+    <script>
+        function navigateTo(page) {
+            window.location.href = page;
+        }
+
+        // Load goals from localStorage and display on calendar
+        function loadCalendar() {
+            document.querySelectorAll('.goal').forEach(cell => {
+                cell.classList.remove('goal');
+                cell.innerHTML = cell.getAttribute('data-day'); // Reset to day number only
+            });
+
+            const goals = JSON.parse(localStorage.getItem('goals')) || [];
+
+            goals.forEach(goal => {
+                if (!goal.completed) {
+                    const day = new Date(goal.deadline).getDate();
+                    const cell = document.querySelector(`td[data-day="${day}"]`);
+
+                    if (cell) {
+                        cell.innerHTML = `${day}<br><small>${goal.name}</small>`;
+                        cell.classList.add('goal');
+                    }
+                }
+            });
+        }
+
+        window.onload = loadCalendar;
+    </script>
+</body>
+</html>

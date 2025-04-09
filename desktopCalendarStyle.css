@@ -1,0 +1,162 @@
+/* Global Styles */
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    width: 100vw;
+    font-family: "Courier New", Courier, monospace;
+}
+
+/* Calendar Container */
+.calendar {
+    padding: 20px;
+    height: calc(100vh - 80px); 
+    width: 90%;
+    margin: 20px auto;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Calendar Header */
+.calendar-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 30px;
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.arrow-btn {
+    background: none;
+    border: none;
+    font-size: 3rem;
+    cursor: pointer;
+    padding: 10px;
+    margin: 0 20px;
+}
+
+#month-year {
+    font-size: 3rem;
+}
+
+/* Calendar Table */
+.calendar-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.calendar-table th,
+.calendar-table td {
+    width: 14.2%;
+    padding: 20px 10px; 
+    text-align: center;
+    border: 1px solid #ccc;
+    font-size: 2rem; 
+}
+
+/* Highlighted Day */
+.calendar-table td.highlight {
+    background-color: #add8e6;
+    border-radius: 50%;
+}
+
+/* Goal Day */
+.calendar-table td.goal-day {
+    background-color: #225c27;
+    border-radius: 50%;
+}
+.goal-day {
+    background-color: #4caf50;
+    color: white;
+    font-weight: bold;
+}
+.highlight {
+    background-color: #ffeb3b;
+    font-weight: bold;
+}
+
+/* Tab Section */
+.tab-section {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    background-color: whitesmoke;
+    border-style: solid;
+    border-top: 0px;
+    border-left: 0px;
+    border-right: 0px;
+    font-family: "Courier New", Courier, monospace;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.home-tab button,
+.calendar-tab button,
+.goals-tab button {
+    font-weight: bold;
+    font-size: 50px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-family: "Courier New", Courier, monospace;
+}
+
+/* Responsive Design for Larger Screens */
+@media only screen and (min-width: 2560px) {
+    .calendar {
+        width: 80%; 
+        height: calc(100vh - 150px); 
+        margin: 50px auto;
+    }
+
+    .calendar-header {
+        font-size: 2.5rem;
+    }
+
+    .calendar-table th,
+    .calendar-table td {
+        font-size: 2.5rem;
+    }
+
+    .arrow-btn {
+        font-size: 3rem;
+    }
+}
+
+@media only screen and (max-width: 1200px) {
+    .calendar-header {
+        font-size: 1.5rem;
+    }
+
+    .calendar-table th,
+    .calendar-table td {
+        font-size: 1.5rem;
+    }
+
+    .arrow-btn {
+        font-size: 2rem;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .calendar {
+        padding: 10px;
+    }
+
+    .calendar-header {
+        font-size: 1.2rem;
+    }
+
+    .calendar-table th,
+    .calendar-table td {
+        font-size: 1.2rem;
+    }
+
+    .arrow-btn {
+        font-size: 1.5rem;
+    }
+}
