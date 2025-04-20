@@ -1,129 +1,292 @@
-* {
-  font-size: 18px;
-  box-sizing: border-box;
-}
-
+/* Base */
 body {
   margin: 0;
   padding: 0;
-  font-family: "Comic Sans MS", cursive, sans-serif;
-  background-color: #bee3ff; /* sky blue */
-  color: #ffffff;
+  height: 100vh;
+  width: 100vw;
+  font-family: "Courier New", Courier, monospace;
+  background-color: whitesmoke;
 }
 
-.App {
-  text-align: center;
-  padding: 20px;
+/* Header */
+.tab-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
+  background-color: whitesmoke;
+  border-bottom: 1px solid #ccc;
+  font-family: "Courier New", Courier, monospace;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
 }
 
-/* HEADER */
-.cereal-hero {
-  background-color: #fff6d1;
-  border-bottom: 5px dashed #f8b400;
-  border-radius: 0 0 50px 50px;
-  padding: 40px 20px;
+/* Sub-flex regions */
+.left,
+.center,
+.right {
+  display: flex;
+  align-items: center;
 }
 
-.cereal-hero h1 {
-  font-size: 48px;
+.left {
+  flex: 1;
+}
+
+.center {
+  flex: 2;
+  justify-content: center;
+}
+
+.right {
+  flex: 1;
+  justify-content: flex-end;
+}
+
+.header-title {
+  font-size: 50px;
   font-weight: bold;
-  color: #ff4d4d;
 }
 
-.cereal-hero p {
+.nav-tabs {
+  display: flex;
+  gap: 60px; /* spacing between buttons */
+}
+
+.nav-tabs button {
+  font-weight: bold;
   font-size: 24px;
-  color: #ec645b;
-}
-
-.cereal-card {
-  background-color: #ec645b;
-  border-radius: 16px;
-  padding: 20px;
-  box-shadow: 10px 10px 26px rgba(0, 0, 0, 0.35);
-  margin-bottom: 20px;
-}
-
-/* COUNTER */
-.counter h2 {
-  font-size: 24px;
-  color: rgb(0, 0, 0);
-}
-
-.counter button {
-  font-size: 28px;
-  padding: 10px 20px;
-  background-color: #fbc1bb;
-  border-radius: 12px;
-  color: #ec645b;
+  background: none;
   border: none;
-  transition: background-color 0.2s ease;
+  cursor: pointer;
+  font-family: "Courier New", Courier, monospace;
 }
 
-.counter button:hover {
-  background-color: #ffc8c0;
+.nav-tabs button.active {
+  text-decoration: underline;
+}
+
+.profile-icon {
+  font-size: 30px;
   cursor: pointer;
 }
 
-/* FILTERED LIST */
-.filter-list h1 {
-  font-size: 40px;
-  margin-bottom: 20px;
-  color: white;
+/* Home */
+.home-center {
+  height: 80vh;
+  background-color: whitesmoke;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 50px;
+  text-align: center;
 }
 
-input[type="text"] {
-  font-size: 28px;
-  padding: 10px;
+#goal-bttn {
+  border-style: groove;
+  background: none;
+  cursor: pointer;
+  font-size: 2rem;
+}
+
+/* Calendar */
+.weekly-calendar {
+  padding: 20px;
+  max-width: 900px;
+  margin: 20px auto;
+  background-color: white;
   border-radius: 10px;
-  border: 2px solid #ec645b;
-  width: 100%;
-  max-width: 300px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.calendar-header {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: bold;
   margin-bottom: 20px;
-  color: #ec645b;
 }
 
-input::placeholder {
-  color: #ec645b;
+.calendar-row {
+  display: flex;
+  justify-content: space-between;
 }
 
-input:focus {
-  outline: none;
-  border-color: #fbc1bb;
+.calendar-day {
+  flex: 1;
+  margin: 5px;
+  padding: 20px;
+  text-align: center;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  font-size: 1.2rem;
+  transition: 0.3s;
+  background-color: #f9f9f9;
 }
 
-/* DROPDOWN */
-.dropdown-toggle {
-  background-color: #f8b400;
+.day-name {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.highlight {
+  background-color: #ffeb3b;
+  font-weight: bold;
+}
+
+.goal-day {
+  background-color: #4caf50;
+  color: white;
+  font-weight: bold;
+}
+
+/* ========== Goal Form Page ========== */
+.goal-form-container {
+  background-color: #f4f4f4;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.goal-form-box {
+  width: 50%;
+  max-width: 1200px;
+  background: white;
+  padding: 50px;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.goal-form-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 40px;
+}
+
+.goal-form-header h1 {
+  font-size: 3rem;
+}
+
+.back-btn {
+  font-size: 2rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.profile-icon {
+  font-size: 2.5rem;
+  cursor: pointer;
+}
+
+.create-goal-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+label {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+input,
+select {
+  font-size: 1.5rem;
+  padding: 10px;
+  width: 100%;
+  border: 2px solid #ddd;
+  border-radius: 5px;
+}
+
+.wager-input {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1.5rem;
+}
+
+.wager-input input {
+  width: 50%;
+}
+
+.create-btn {
+  font-size: 1.8rem;
+  padding: 15px;
+  background: #4caf50;
   color: white;
   border: none;
-  font-size: 28px;
-  border-radius: 10px;
-  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s;
 }
 
-.dropdown-menu {
-  font-size: 24px;
-  border-radius: 10px;
+.create-btn:hover {
+  background: #45a049;
 }
 
-/* ITEM LIST */
-ul {
-  list-style-type: none;
-  padding-left: 0;
+/* ========== Goals Page ========== */
+.goals-page {
+  background-color: whitesmoke;
+  min-height: 100vh;
+  padding: 40px 20px;
+  font-family: "Courier New", Courier, monospace;
 }
 
-li {
-  background-color: #fbc1bb;
-  color: #ec645b;
-  margin-bottom: 10px;
-  padding: 12px;
-  border-radius: 10px;
+.goals-tabs {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.tab-btn {
+  padding: 12px 20px;
+  font-size: 18px;
   font-weight: bold;
-  transition: transform 0.1s ease;
+  border: 2px solid black;
+  background-color: #ffffff;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  border-radius: 8px;
 }
 
-li:hover {
-  background-color: #ffc8c0;
-  transform: scale(1.02);
+.tab-btn.active {
+  background-color: #add8e6;
+}
+
+.goals-list {
+  max-width: 900px;
+  margin: 0 auto;
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.goals-list table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.goals-list th,
+.goals-list td {
+  padding: 12px;
+  border: 1px solid #ccc;
+  text-align: center;
+  font-size: 1.1rem;
+}
+
+.goals-list th {
+  background-color: #f0f0f0;
+  font-weight: bold;
+}
+
+.complete {
+  color: green;
+  font-size: 20px;
   cursor: pointer;
 }
