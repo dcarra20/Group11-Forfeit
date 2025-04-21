@@ -23,14 +23,20 @@ export default function Calendar() {
     setWeekStart(newStart);
   };
 
-  const isSameDay = (date1, date2) =>
-    date1.getDate() === date2.getDate() &&
-    date1.getMonth() === date2.getMonth() &&
-    date1.getFullYear() === date2.getFullYear();
+  const isSameDay = (date1, date2) => {
+    const d1 = new Date(date1);
+    const d2 = new Date(date2);
+    return (
+      d1.getFullYear() === d2.getFullYear() &&
+      d1.getMonth() === d2.getMonth() &&
+      d1.getDate() === d2.getDate()
+    );
+  };
 
   const isGoalDay = (day) =>
     goals.some((goal) => {
-      const goalDate = new Date(goal.deadline);
+      const [year, month, dayNum] = goal.deadline.split("-").map(Number);
+      const goalDate = new Date(year, month - 1, dayNum);
       return isSameDay(goalDate, day) && !goal.completed;
     });
 
@@ -45,7 +51,8 @@ export default function Calendar() {
       const isGoal = isGoalDay(day);
 
       const matchingGoals = goals.filter((goal) => {
-        const goalDate = new Date(goal.deadline);
+        const [year, month, dayNum] = goal.deadline.split("-").map(Number);
+        const goalDate = new Date(year, month - 1, dayNum);
         return isSameDay(goalDate, day) && !goal.completed;
       });
 
