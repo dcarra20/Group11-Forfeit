@@ -36,12 +36,18 @@ export default function Calendar() {
 
   const renderWeek = () => {
     const days = [];
+
     for (let i = 0; i < 7; i++) {
       const day = new Date(weekStart);
       day.setDate(weekStart.getDate() + i);
 
       const isToday = isSameDay(day, new Date());
       const isGoal = isGoalDay(day);
+
+      const matchingGoals = goals.filter((goal) => {
+        const goalDate = new Date(goal.deadline);
+        return isSameDay(goalDate, day) && !goal.completed;
+      });
 
       days.push(
         <div
@@ -54,9 +60,20 @@ export default function Calendar() {
             {day.toLocaleDateString("en-US", { weekday: "short" })}
           </div>
           <div className="day-number">{day.getDate()}</div>
+
+          {matchingGoals.length > 0 && (
+            <ul style={{ marginTop: "10px", listStyle: "none", padding: 0 }}>
+              {matchingGoals.map((goal, idx) => (
+                <li key={idx} style={{ fontSize: "0.9rem" }}>
+                  {goal.name}
+                </li>
+              ))}
+            </ul>
+          )}
         </div>
       );
     }
+
     return days;
   };
 
