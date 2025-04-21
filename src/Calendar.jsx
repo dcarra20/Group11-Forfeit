@@ -2,20 +2,26 @@ import React, { useEffect, useState } from "react";
 
 export default function Calendar() {
   const [goals, setGoals] = useState([]);
-  const [weekStart, setWeekStart] = useState(new Date());
+  const [weekStart, setWeekStart] = useState(getStartOfWeek(new Date()));
 
   useEffect(() => {
     const storedGoals = JSON.parse(localStorage.getItem("goals")) || [];
     setGoals(storedGoals);
-
-    // Set the start of the current week (Sunday)
-    const today = new Date();
-    const day = today.getDay(); // 0 = Sun, 6 = Sat
-    const diff = today.getDate() - day;
-    const start = new Date(today.setDate(diff));
-    start.setHours(0, 0, 0, 0);
-    setWeekStart(start);
   }, []);
+
+  function getStartOfWeek(date) {
+    const day = date.getDay();
+    const diff = date.getDate() - day;
+    const start = new Date(date.setDate(diff));
+    start.setHours(0, 0, 0, 0);
+    return start;
+  }
+
+  const changeWeek = (direction) => {
+    const newStart = new Date(weekStart);
+    newStart.setDate(newStart.getDate() + direction * 7);
+    setWeekStart(newStart);
+  };
 
   const isSameDay = (date1, date2) =>
     date1.getDate() === date2.getDate() &&
@@ -57,12 +63,16 @@ export default function Calendar() {
   return (
     <div className="calendar weekly-calendar">
       <div className="calendar-header">
-        Week of{" "}
-        {weekStart.toLocaleDateString("en-US", {
-          month: "long",
-          day: "numeric",
-          year: "numeric",
-        })}
+        <button onClick={() => changeWeek(-1)}>&larr;</button>
+        <span>
+          Week of{" "}
+          {weekStart.toLocaleDateString("en-US", {
+            month: "long",
+            day: "numeric",
+            year: "numeric",
+          })}
+        </span>
+        <button onClick={() => changeWeek(1)}> &rarr;</button>
       </div>
       <div className="calendar-row">{renderWeek()}</div>
     </div>
