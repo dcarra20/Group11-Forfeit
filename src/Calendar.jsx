@@ -10,35 +10,26 @@ export default function Calendar() {
   }, []);
 
   function getStartOfWeek(date) {
-    const day = date.getDay();
-    const diff = date.getDate() - day;
-    const start = new Date(date.setDate(diff));
-    start.setHours(0, 0, 0, 0);
-    return start;
+    const copy = new Date(date);
+    const day = copy.getDay(); // Sunday = 0
+    copy.setDate(copy.getDate() - day);
+    copy.setHours(0, 0, 0, 0);
+    return copy;
   }
 
   const changeWeek = (direction) => {
     const newStart = new Date(weekStart);
-    newStart.setDate(newStart.getDate() + direction * 7);
-    setWeekStart(newStart);
+    newStart.setDate(weekStart.getDate() + direction * 7);
+    setWeekStart(getStartOfWeek(newStart));
   };
 
   const isSameDay = (date1, date2) => {
-    const d1 = new Date(date1);
-    const d2 = new Date(date2);
     return (
-      d1.getFullYear() === d2.getFullYear() &&
-      d1.getMonth() === d2.getMonth() &&
-      d1.getDate() === d2.getDate()
+      date1.getFullYear() === date2.getFullYear() &&
+      date1.getMonth() === date2.getMonth() &&
+      date1.getDate() === date2.getDate()
     );
   };
-
-  const isGoalDay = (day) =>
-    goals.some((goal) => {
-      const [year, month, dayNum] = goal.deadline.split("-").map(Number);
-      const goalDate = new Date(year, month - 1, dayNum);
-      return isSameDay(goalDate, day) && !goal.completed;
-    });
 
   const renderWeek = () => {
     const days = [];
@@ -48,9 +39,9 @@ export default function Calendar() {
       day.setDate(weekStart.getDate() + i);
 
       const isToday = isSameDay(day, new Date());
-      const isGoal = isGoalDay(day);
 
       const matchingGoals = goals.filter((goal) => {
+        // Parse date safely in local time to avoid timezone offset
         const [year, month, dayNum] = goal.deadline.split("-").map(Number);
         const goalDate = new Date(year, month - 1, dayNum);
         return isSameDay(goalDate, day) && !goal.completed;
@@ -60,7 +51,7 @@ export default function Calendar() {
         <div
           key={i}
           className={`calendar-day ${isToday ? "highlight" : ""} ${
-            isGoal ? "goal-day" : ""
+            matchingGoals.length > 0 ? "goal-day" : ""
           }`}
         >
           <div className="day-name">
@@ -96,7 +87,7 @@ export default function Calendar() {
             year: "numeric",
           })}
         </span>
-        <button onClick={() => changeWeek(1)}> &rarr;</button>
+        <button onClick={() => changeWeek(1)}>&rarr;</button>
       </div>
       <div className="calendar-row">{renderWeek()}</div>
     </div>
