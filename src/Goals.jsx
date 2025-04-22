@@ -25,12 +25,17 @@ export default function Goals() {
           <td>{goal.name}</td>
           <td>{goal.deadline}</td>
           <td>{goal.category}</td>
-          <td
-            className="complete"
-            onClick={() => !goal.completed && markAsComplete(goal.index)}
-            style={{ cursor: goal.completed ? "default" : "pointer" }}
-          >
-            {goal.completed ? "✔️" : ""}
+          <td>
+            {goal.completed ? (
+              "✔️"
+            ) : (
+              <button
+                className="complete-btn"
+                onClick={() => markAsComplete(goal.index)}
+              >
+                Complete
+              </button>
+            )}
           </td>
         </tr>
       ));
