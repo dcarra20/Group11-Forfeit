@@ -126,6 +126,36 @@ body {
   background: linear-gradient(135deg, #ec645b, #64c9ff);
 }
 
+/* Social Section */
+.social-center {
+  margin-top: 4rem;
+  padding: 1rem;
+  text-align: center;
+}
+
+.post-feed {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin: 20px auto;
+  max-width: 600px;
+}
+
+.post-card {
+  background: #f0f0f0;
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  text-align: left;
+  transition: transform 0.3s ease;
+}
+
+.post-card:hover {
+  transform: translateY(-5px);
+}
+
+
+
 /* Calendar */
 .weekly-calendar {
   padding: 20px;
