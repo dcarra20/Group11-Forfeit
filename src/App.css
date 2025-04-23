@@ -145,7 +145,7 @@ body {
   background: #f0f0f0;
   padding: 20px;
   border-radius: 15px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   text-align: left;
   transition: transform 0.3s ease;
 }
@@ -153,8 +153,6 @@ body {
 .post-card:hover {
   transform: translateY(-5px);
 }
-
-
 
 /* Calendar */
 .weekly-calendar {
