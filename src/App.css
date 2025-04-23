@@ -201,12 +201,12 @@ body {
   border-radius: 10px;
   font-size: 1.2rem;
   transition: 0.3s;
-  background: #fdf0f0; /* soft pastel base */
+  background: #fdf0f0;
   position: relative;
 }
 
 .goal-day {
-  background-color: #ffb347; /* bright orange */
+  background-color: #ffb347;
   color: #fff;
   font-weight: bold;
 }
