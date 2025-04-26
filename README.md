@@ -9,7 +9,7 @@ Once installed, extract the files into one folder.
 
 ## Starting the application
 
-Open the folder and open the application by clicking on the HTML file called desktopHome.
+Open the folder "Group11-Forfeit" in Visual Studio Code and open the application by opening a new terminal then enter "npm start"
 
 ## Using the application
 
