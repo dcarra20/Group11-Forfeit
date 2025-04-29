@@ -1,8 +1,14 @@
 import React, { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
 
 export default function Calendar() {
   const [goals, setGoals] = useState([]);
-  const [weekStart, setWeekStart] = useState(getStartOfWeek(new Date()));
+  const location = useLocation();
+  const [weekStart, setWeekStart] = useState(() => {
+    const jumpDateStr = location.state?.jumpToDate;
+    const jumpDate = jumpDateStr ? new Date(jumpDateStr) : new Date();
+    return getStartOfWeek(jumpDate);
+  });
 
   useEffect(() => {
     const storedGoals = JSON.parse(localStorage.getItem("goals")) || [];
@@ -11,7 +17,7 @@ export default function Calendar() {
 
   function getStartOfWeek(date) {
     const copy = new Date(date);
-    const day = copy.getDay(); // Sunday = 0
+    const day = copy.getDay();
     copy.setDate(copy.getDate() - day);
     copy.setHours(0, 0, 0, 0);
     return copy;
@@ -41,19 +47,21 @@ export default function Calendar() {
       const isToday = isSameDay(day, new Date());
 
       const matchingGoals = goals.filter((goal) => {
-        // Parse date safely in local time to avoid timezone offset
         const [year, month, dayNum] = goal.deadline.split("-").map(Number);
         const goalDate = new Date(year, month - 1, dayNum);
-        return isSameDay(goalDate, day) && !goal.completed;
+        return isSameDay(goalDate, day);
       });
 
+      const hasActiveGoals = matchingGoals.some((goal) => !goal.completed);
+      const hasCompletedGoals = matchingGoals.some((goal) => goal.completed);
+
+      let dayClass = "calendar-day";
+      if (isToday) dayClass += " highlight";
+      if (hasActiveGoals) dayClass += " goal-day";
+      if (hasCompletedGoals) dayClass += " completed-day";
+
       days.push(
-        <div
-          key={i}
-          className={`calendar-day ${isToday ? "highlight" : ""} ${
-            matchingGoals.length > 0 ? "goal-day" : ""
-          }`}
-        >
+        <div key={i} className={dayClass}>
           <div className="day-name">
             {day.toLocaleDateString("en-US", { weekday: "short" })}
           </div>
@@ -62,8 +70,28 @@ export default function Calendar() {
           {matchingGoals.length > 0 && (
             <ul style={{ marginTop: "10px", listStyle: "none", padding: 0 }}>
               {matchingGoals.map((goal, idx) => (
-                <li key={idx} style={{ fontSize: "0.9rem" }}>
-                  {goal.name}
+                <li
+                  key={idx}
+                  style={{ fontSize: "0.9rem", marginBottom: "8px" }}
+                >
+                  <div>
+                    {goal.completed ? "" : ""}
+                    {goal.name} (${goal.wager})
+                  </div>
+                  {goal.proofImage && (
+                    <img
+                      src={goal.proofImage}
+                      alt="Proof"
+                      style={{
+                        marginTop: "5px",
+                        width: "50px",
+                        height: "50px",
+                        objectFit: "cover",
+                        borderRadius: "5px",
+                        boxShadow: "0 2px 6px rgba(0, 0, 0, 0.2)",
+                      }}
+                    />
+                  )}
                 </li>
               ))}
             </ul>
@@ -89,6 +117,31 @@ export default function Calendar() {
         </span>
         <button onClick={() => changeWeek(1)}>&rarr;</button>
       </div>
+
+      <div
+        style={{ textAlign: "center", marginBottom: "10px", fontSize: "1rem" }}
+      >
+        <span
+          style={{
+            background: "#ffb347",
+            padding: "5px 10px",
+            borderRadius: "5px",
+            marginRight: "10px",
+          }}
+        >
+          Active
+        </span>
+        <span
+          style={{
+            background: "#b2f2bb",
+            padding: "5px 10px",
+            borderRadius: "5px",
+          }}
+        >
+          Completed
+        </span>
+      </div>
+
       <div className="calendar-row">{renderWeek()}</div>
     </div>
   );

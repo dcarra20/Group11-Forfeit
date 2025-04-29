@@ -195,11 +195,12 @@ body {
 .calendar-day {
   flex: 1;
   margin: 5px;
-  padding: 20px;
+  padding: 40px 20px;
+  min-height: 200px;
   text-align: center;
   border: 1px solid #ccc;
   border-radius: 10px;
-  font-size: 1.2rem;
+  font-size: 1.3rem;
   transition: 0.3s;
   background: #fdf0f0;
   position: relative;
@@ -209,6 +210,12 @@ body {
   background-color: #ffb347;
   color: #fff;
   font-weight: bold;
+}
+
+.completed-day {
+  background-color: #b2f2bb;
+  border: 2px solid #28a745;
+  color: black;
 }
 
 .highlight {
