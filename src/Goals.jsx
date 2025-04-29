@@ -106,7 +106,7 @@ export default function Goals() {
           className={`tab-btn ${activeTab === "past" ? "active" : ""}`}
           onClick={() => setActiveTab("past")}
         >
-          Past
+          Completed
         </button>
       </div>
 
